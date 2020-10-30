@@ -50,4 +50,4 @@ workflows:
 
       - gae_deploy:
           requires:
-          - build_test
+            - build_test
