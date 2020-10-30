@@ -10,14 +10,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install Python Dependencies
-        command: |
-          echo echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
-          pip install --user -r -p
+          name: Install Python Dependencies
+          command: |
+            echo echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
+            pip install --user -r -p
       - run:
-        name: Run Tests
-        command: |
-          pytest
+          name: Run Tests
+          command: |
+            pytest
 
 
 # Orchestrate or schedule a set of jobs
