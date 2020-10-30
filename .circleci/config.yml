@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy ./app/app.yaml
+            gcloud --quiet app deploy app.yaml
 
 # ------- WORKFLOWS ------- #
 workflows:
@@ -51,3 +51,7 @@ workflows:
       - gae_deploy:
           requires:
             - build_test
+          filters:
+            branches:
+              only:
+                - main
