@@ -42,12 +42,12 @@ workflows:
   build_test_deploy:
     jobs:
       - build_test:
-        #ensure we only deploy the master branch and not a dev branch
-        filters:
-          branches:
-            only:
-              - main
+          #ensure we only deploy the master branch and not a dev branch
+          filters:
+            branches:
+              only:
+                - main
 
       - gae_deploy:
-        requires:
+          requires:
           - build_test
