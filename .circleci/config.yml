@@ -42,12 +42,12 @@ workflows:
   #run the unit tests and deploy to gae if pass
   build_test_deploy:
     jobs:
-      #- build_test:
+      - build_test:
           #ensure we only deploy the master branch and not a dev branch
-      #    filters:
-      #      branches:
-      #        only:
-      #          - main
+          filters:
+            branches:
+              only:
+                - main
 
       - gae_deploy:
           #requires:
