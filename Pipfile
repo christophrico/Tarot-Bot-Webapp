@@ -11,6 +11,7 @@ pytest = "*"
 pylint = "*"
 Flask = "*"
 python-dotenv = "*"
+pytest-circleci = "*"
 
 [requires]
 python_version = "3.7.4"
