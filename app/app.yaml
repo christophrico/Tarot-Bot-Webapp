@@ -1,8 +1,1 @@
 runtime: python37
-instance_class: F1
-automatic_scaling:
-  max_instances: 1
-env_variables:
-  GCLOUD_PROJECT: \"$GCLOUD_PROJECT\"
-  GOOGLE_COMPUTE_ZONE: \"$GOOGLE_COMPUTE_ZONE\"
-  GOOGLE_PROJECT_ID: \"$ GOOGLE_PROJECT_ID\"
