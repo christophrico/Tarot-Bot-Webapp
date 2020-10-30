@@ -28,13 +28,15 @@ jobs:
   gae_deploy:
     docker:
       - image: google/cloud-sdk:latest
+
+    working_directory: ~/repo
     steps:
       #use the gcp orb
       - gcp-cli/initialize
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy app.yaml
+            gcloud --quiet app deploy ./app/app.yaml
 
 
 # ------- WORKFLOWS ------- #
@@ -42,16 +44,16 @@ workflows:
   #run the unit tests and deploy to gae if pass
   build_test_deploy:
     jobs:
-      - build_test:
+      #- build_test:
           #ensure we only deploy the master branch and not a dev branch
-          filters:
-            branches:
-              only:
-                - main
+      #    filters:
+      #      branches:
+      #        only:
+      #          - main
 
       - gae_deploy:
-          requires:
-            - build_test
+          #requires:
+          #  - build_test
           filters:
             branches:
               only:
