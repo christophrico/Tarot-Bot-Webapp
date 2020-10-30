@@ -30,12 +30,11 @@ jobs:
       - image: google/cloud-sdk:latest
     steps:
       #use the gcp orb
-      #- gcp-cli/initialize
+      - gcp-cli/initialize
       - run:
           name: Deploy to Google App Engine
           command: |
-            pwd
-            ls -l
+            gcloud app deploy /root/project/app/app.yaml
 
 
 # ------- WORKFLOWS ------- #
