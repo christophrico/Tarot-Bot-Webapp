@@ -26,8 +26,8 @@ jobs:
 
   #--- JOB 2: deploy to google app engine ---#
   gae_deploy:
-    #docker:
-    #  - image: google/cloud-sdk:latest
+    docker:
+      - image: google/cloud-sdk:latest
     steps:
       #use the gcp orb
       #- gcp-cli/initialize
