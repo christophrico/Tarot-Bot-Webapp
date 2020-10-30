@@ -34,7 +34,9 @@ jobs:
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy ./app/app.yaml
+            pwd
+            ls -l
+            ls -l ./app
 
 # ------- WORKFLOWS ------- #
 workflows:
