@@ -6,10 +6,6 @@ orbs:
 jobs:
   #--- JOB 1: test the app on circleci ---#
   build_test:
-    #ensure we only deploy the master branch and not a dev branch
-    branches:
-      only:
-        - main
     #use the circleci python 3.7 image to make pytest work
     docker:
       - image: circleci/python:3.7
@@ -30,10 +26,6 @@ jobs:
 
   #--- JOB 2: deploy to google app engine ---#
   gae_deploy:
-    #ensure we only deploy the master branch and not a dev branch
-    branches:
-      only:
-        - main
     docker:
       - image: google/cloud-sdk:latest
     steps:
@@ -49,7 +41,15 @@ workflows:
   #run the unit tests and deploy to gae if pass
   build_test_deploy:
     jobs:
-      - build_test
+      - build_test:
+        #ensure we only deploy the master branch and not a dev branch
+        branches:
+          only:
+            - main
+
       - gae_deploy:
         requires:
           - build_test
+        branches:
+          only:
+            - main
