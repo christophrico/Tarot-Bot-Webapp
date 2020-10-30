@@ -13,7 +13,7 @@ jobs:
           name: Install Python Dependencies
           command: |
             echo echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
-            pip install --user -r -p
+            pip install --user -r Pipfile
       - run:
           name: Run Tests
           command: |
