@@ -12,11 +12,12 @@ jobs:
       - run:
           name: Install Python Dependencies
           command: |
-            pipenv update
+            sudo pip install pipenv
+            pipenv install
       - run:
-          name: Run Tests
+          name: Run Unit Tests
           command: |
-            pytest
+            pipenv run pytest
 
 
 # Orchestrate or schedule a set of jobs
