@@ -29,14 +29,13 @@ jobs:
     docker:
       - image: google/cloud-sdk:latest
 
-    working_directory: ~/repo
     steps:
       #use the gcp orb
       - gcp-cli/initialize
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy ./app/app.yaml
+            gcloud --quiet app deploy ./app/app.yml
 
 
 # ------- WORKFLOWS ------- #
