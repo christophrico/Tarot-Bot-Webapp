@@ -6,7 +6,7 @@ jobs:
   #test the app on circleci
   build_test:
     docker:
-      - image: circleci/python:3.7.4
+      - image: circleci/python:3.7
     steps:
       - checkout
       - run:
