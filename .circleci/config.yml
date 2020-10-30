@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy app.yaml
+            gcloud --quiet app deploy /home/circleci/build/app/app.yaml
 
 
 # ------- WORKFLOWS ------- #
