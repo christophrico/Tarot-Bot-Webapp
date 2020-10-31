@@ -2,4 +2,4 @@ runtime: python37
 
 handlers:
 - url: /
-  script: hello_world.py
+  script: auto
