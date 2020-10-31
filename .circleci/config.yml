@@ -34,6 +34,14 @@ jobs:
       #use the gcp orb
       - gcp-cli/initialize
       - run:
+          name: Generate requirements.txt for GAE
+          command: |
+            sudo pip install pipenv
+            pipenv run pip freeze > requirements.txt
+            sudo rm -rf Pipfile
+            sudo rm -rf Pipfile.lock
+
+      - run:
           name: Deploy to Google App Engine
           command: |
             gcloud --quiet app deploy ./app/app.yaml
