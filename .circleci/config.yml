@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   gcp-cli: circleci/gcp-cli@2.1.0
 
+
 jobs:
   #--- JOB 1: test the app on circleci ---#
   build_test:
@@ -11,9 +12,12 @@ jobs:
     steps:
       #start by checking out the repo
       - checkout
-      #restore the dependencies so we don't have to waste time insalling
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      #restore the dependencies from cache so we don't have to waste time insalling
+      - run:
+          name: Update CircleCI Permissions
+          command: |
+            sudo chown -R circleci:circleci /usr/local/bin
+            sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - restore_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       #then run the commands below to set up the virtual env in CircleCI
@@ -35,10 +39,6 @@ jobs:
           name: Run Unit Tests
           command: |
             pipenv run pytest
-      #store them so we can see the
-      - store_test_results:
-          path: test-results
-
       #now we want to generate the requirements file
       #because GAE doesn't support Pipfile
       - run:
@@ -52,7 +52,6 @@ jobs:
           paths: .
 
 
-
   #--- JOB 2: deploy to google app engine ---#
   gae_deploy:
     docker:
@@ -60,6 +59,7 @@ jobs:
     steps:
       #check out the repo
       - checkout
+      #attach the workspace so we can get at requirements.txt
       - attach_workspace:
           at: ./
       #use the gcp orb
@@ -67,7 +67,10 @@ jobs:
       - run:
           name: Deploy to Google App Engine
           command: |
-            ls -l ./app
+            ls -l
+
+
+
 
 # ------- WORKFLOWS ------- #
 workflows:
