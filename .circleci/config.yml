@@ -26,6 +26,7 @@ jobs:
 
   #--- JOB 2: deploy to google app engine ---#
   gae_deploy:
+    working_directory: /root/project/app
     docker:
       - image: google/cloud-sdk:latest
     steps:
@@ -34,7 +35,7 @@ jobs:
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy app.yaml
+            gcloud --quiet app deploy
 
 # ------- WORKFLOWS ------- #
 workflows:
