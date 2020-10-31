@@ -26,16 +26,17 @@ jobs:
 
   #--- JOB 2: deploy to google app engine ---#
   gae_deploy:
-    working_directory: /app/
+    working_directory: ~/app/
     docker:
       - image: google/cloud-sdk:latest
     steps:
+      -checkout
       #use the gcp orb
       - gcp-cli/initialize
       - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy
+            gcloud --quiet app deploy /app/app.yaml
 
 # ------- WORKFLOWS ------- #
 workflows:
