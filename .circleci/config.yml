@@ -10,8 +10,10 @@ jobs:
     docker:
       - image: circleci/python:3.7
     steps:
+      # 1 A:
       #start by checking out the repo
       - checkout
+      # 1 B:
       #restore the dependencies from cache so we don't have to waste time insalling
       - run:
           name: Update CircleCI Permissions
@@ -20,13 +22,16 @@ jobs:
             sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - restore_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-      #then run the commands below to set up the virtual env in CircleCI
+      # 1 C:
+      #run the commands below to set up the virtual env in CircleCI
       #so that unit tests can be run
       - run:
           name: Install Python Dependencies
           command: |
             sudo pip install pipenv
             pipenv install
+            pipenv run pip freeze > ./app/requirements.txt
+      # 1 D:
       #save the cache to speed up future runs
       - save_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
@@ -34,19 +39,14 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
-      #actually run the unit tests
+      # 1 E:
+      # actually run the unit tests
       - run:
           name: Run Unit Tests
           command: |
             pipenv run pytest
-      #now we want to generate the requirements file
-      #because GAE doesn't support Pipfile
-      - run:
-          name: Generate requirements.txt for GAE
-          command: |
-            pipenv run pip freeze > ./app/requirements.txt
-            sudo rm -rf Pipfile
-            sudo rm -rf Pipfile.lock
+      # 1 F:
+      #persist the generated requirements.txt to workspace
       - persist_to_workspace:
           root: ./
           paths: .
@@ -57,17 +57,22 @@ jobs:
     docker:
       - image: google/cloud-sdk:latest
     steps:
+      # 2 A:
       #check out the repo
       - checkout
+      # 2 B:
       #attach the workspace so we can get at requirements.txt
       - attach_workspace:
           at: ./
-      #use the gcp orb
+      # 2 C:
+      #use the gcp orb to automate connecting to gcp
       - gcp-cli/initialize
+      # 2 D:
+      #now, finally, deploy the app
       - run:
           name: Deploy to Google App Engine
           command: |
-            ls -l
+            gcloud app deploy /root/project/app/app.yaml
 
 
 

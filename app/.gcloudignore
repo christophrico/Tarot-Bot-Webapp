@@ -12,6 +12,8 @@
 # below:
 .git
 .gitignore
+Pipfile
+Pipfile.lock
 
 # Python pycache:
 __pycache__/
