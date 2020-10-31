@@ -6,12 +6,16 @@ orbs:
 jobs:
   #--- JOB 1: test the app on circleci ---#
   build_test:
-    #use the circleci python 3.7 image to make pytest work
     docker:
       - image: circleci/python:3.7
     steps:
       #start by checking out the repo
       - checkout
+      #restore the dependencies so we don't have to waste time insalling
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+      - restore_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       #then run the commands below to set up the virtual env in CircleCI
       #so that unit tests can be run
       - run:
@@ -19,10 +23,35 @@ jobs:
           command: |
             sudo pip install pipenv
             pipenv install
+      #save the cache to speed up future runs
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.7/site-packages"
+      #actually run the unit tests
       - run:
           name: Run Unit Tests
           command: |
             pipenv run pytest
+      #store them so we can see the
+      - store_test_results:
+          path: test-results
+
+      #now we want to generate the requirements file
+      #because GAE doesn't support Pipfile
+      - run:
+          name: Generate requirements.txt for GAE
+          command: |
+            pipenv run pip freeze > ./app/requirements.txt
+            sudo rm -rf Pipfile
+            sudo rm -rf Pipfile.lock
+      - persist_to_workspace:
+          root: ./
+          paths: .
+
+
 
   #--- JOB 2: deploy to google app engine ---#
   gae_deploy:
@@ -31,20 +60,14 @@ jobs:
     steps:
       #check out the repo
       - checkout
+      - attach_workspace:
+          at: ./
       #use the gcp orb
       - gcp-cli/initialize
       - run:
-          name: Generate requirements.txt for GAE
-          command: |
-            pip install pipenv
-            pipenv run pip freeze > requirements.txt
-            rm -rf Pipfile
-            rm -rf Pipfile.lock
-      - run:
           name: Deploy to Google App Engine
           command: |
-            gcloud --quiet app deploy ./app/app.yaml
-
+            ls -l ./app
 
 # ------- WORKFLOWS ------- #
 workflows:
