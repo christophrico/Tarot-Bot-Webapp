@@ -12,6 +12,8 @@ pylint = "*"
 Flask = "*"
 python-dotenv = "*"
 pytest-circleci = "*"
+flask-dropzone = "*"
+"google.cloud" = "*"
 
 [requires]
 python_version = "3.7"

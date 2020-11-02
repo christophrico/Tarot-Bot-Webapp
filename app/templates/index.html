@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<script src="static/js/dropzone.js"></script>
-<link rel="stylesheet" href="/static/css/dropzone.css">
+<html lang="en">
 
-<html>
   <head>
+    <meta charset="UTF-8"
     <title>TarotBot</title>
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
   </head>
 
   <body>
      <h1> Welcome to TarotBot</h1>
      <p>Upload your image to look into the future!</p>
-       <!-- Change /upload-target to your upload address -->
-       <form action="/upload-target" class="dropzone"></form>
+     {{ dropzone.create(action='upload') }}
+     {{ dropzone.load_js() }}
+     {{ dropzone.config() }}
   </body>
 
 </html>

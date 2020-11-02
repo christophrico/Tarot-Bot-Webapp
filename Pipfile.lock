@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9c522189318e1039401e64c2e734d73276612363a66bcab25a69de7c95f64a8b"
+            "sha256": "0030a5fa145556150175d7aafa81f46f3dbab7b4724b6b9c99dfadb4e613a976"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.7.4"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -54,6 +54,22 @@
             ],
             "index": "pypi",
             "version": "==1.1.2"
+        },
+        "flask-dropzone": {
+            "hashes": [
+                "sha256:e5e3d4740d407807aa99d7b6438aad812a1ce01e1b07b0f409462ff078386709",
+                "sha256:fddeb963aef31da81e7bc39cad740e8778a8c59d96ef76c7d5ed362fc626a73a"
+            ],
+            "index": "pypi",
+            "version": "==1.5.4"
+        },
+        "google.cloud": {
+            "hashes": [
+                "sha256:01430187cf56df10a9ba775dd547393185d4b40741db0ea5889301f8e7a9d5d3",
+                "sha256:fb1ab7b0548fe44b3d538041f0a374505b7f990d448a935ea36649c5ccab5acf"
+            ],
+            "index": "pypi",
+            "version": "==0.34.0"
         },
         "iniconfig": {
             "hashes": [
