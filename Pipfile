@@ -13,7 +13,8 @@ Flask = "*"
 python-dotenv = "*"
 pytest-circleci = "*"
 flask-dropzone = "*"
-"google.cloud" = "*"
+"google.cloud.automl" = "*"
+google-cloud-automl = "*"
 
 [requires]
 python_version = "3.7"
