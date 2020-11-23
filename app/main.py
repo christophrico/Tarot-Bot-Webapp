@@ -5,7 +5,8 @@ from flask import Flask, redirect, render_template, request, session
 from flask_dropzone import Dropzone
 
 import image_handler as ih
-import firebase_handler as fh
+import firestore_handler as fh
+
 
 app = Flask(__name__)
 # Flask-Dropzone config:
@@ -15,6 +16,7 @@ app.config.update(
     DROPZONE_MAX_FILES=30,
 )
 dropzone = Dropzone(app)
+
 
 
 """
@@ -31,20 +33,26 @@ by using AutoML API and firestore to store the prediction
 """
 @app.route('/request-prediction', methods=['POST'])
 def predict():
-    print("Requesting prediction...")
+    print("Requesting prediction from model...")
     f = request.files['file']
     prediction = ih.request_prediction(file=f)
 
     #store the prediction in firestore to be viewed in homepage
     print("Storing prediction in Firestore...")
     fh.update_database(prediction)
-    return redirect("/retrieve-predictions")
+    return redirect('', 204)
 
 
+"""
+Display a list of all the previous predictions
+"""
 @app.route('/retrieve-predictions')
 def get_predictions():
     prediction_list = fh.get_predictions()
-    return render_template("results.html", predictions=prediction_list)
+    return render_template("results.html",
+                            most_recent=prediction_list[0],
+                            predictions=prediction_list[1:]
+                          )
 
 
 

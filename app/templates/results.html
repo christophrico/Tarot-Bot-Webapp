@@ -2,15 +2,48 @@
 <html lang="en">
 
   <head>
-    <meta charset='UTF-8'
-    <title>TarotBot</title>
+    <meta charset='UTF-8'>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 15px;
+      }
+    </style>
   </head>
+
   <body>
-      <p> Predictions </p>
-      {% for card in predictions %}
-        <li>Card: {{ card.display_name }}   Score: {{ card.score }}</li>
-      {% endfor %}
+    <center>
+      <h1>TarotBot</h1>
+      <h3> Most Recent Prediction </h3>
+        <table>
+          <tr>
+            <th>Card</th>
+            <th>Confidence Score</th>
+          </tr>
+          <tr>
+            <td>{{ most_recent.display_name }}</td>
+            <td>{{ most_recent.score }}</td>
+          </tr>
+        </table>
+
+      <h3> Previous Predictions </h3>
+        <table>
+          <tr>
+            <th>Card</th>
+            <th>Confidence Score</th>
+          </tr>
+          {% for card in predictions %}
+            <tr>
+              <td>{{ card.display_name }}</td>
+              <td>{{ card.score }}</td>
+            </tr>
+          {% endfor %}
+        </table>
       <br>
-      <a href="/">Click here to make another prediction</a>
+      <a href="/">Click here to make another prediction!</a>
+    </center>
   </body>
 </html>

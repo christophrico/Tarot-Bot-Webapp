@@ -2,8 +2,7 @@
 <html lang="en">
 
   <head>
-    <meta charset='UTF-8'
-    <title>TarotBot</title>
+    <meta charset='UTF-8'>
     {{ dropzone.load_css() }}
     {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
 
@@ -11,13 +10,16 @@
   </head>
 
   <body>
-     <h1> Welcome to TarotBot</h1>
-     <p>Upload your image to look into the future!</p>
-     {{ dropzone.create(action='predict') }}
-     {{ dropzone.load_js() }}
-     {{ dropzone.config() }}
-
-     <a href="/retrieve-predictions"> Click here to see your predictions! </a>
-
+    <center>
+      <h1>TarotBot</h1>
+      <p>Upload your image to look into the future!</p>
+      <i>At present, this app only works with still photos of an individual Tarot card.</i>
+    </center>
+    {{ dropzone.create(action='predict') }}
+    {{ dropzone.load_js() }}
+    {{ dropzone.config() }}
+    <center>
+      <br><a href="/retrieve-predictions"> Click here to see your predictions! </a></br>
+    </center>
   </body>
 </html>
