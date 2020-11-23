@@ -21,6 +21,7 @@ jobs:
             sudo chown -R circleci:circleci /usr/local/bin
             sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
             echo ${CREDENTIALS} > ./app/GCPkeys.json
+            ls -l ./app
       - restore_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       # 1 C:
