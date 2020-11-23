@@ -18,8 +18,7 @@ dropzone = Dropzone(app)
 
 
 """
-The home page has a list of predictions
-and a Dropzone form to submit a new photo
+Home page
 """
 @app.route('/', methods=['GET'])
 def index():

@@ -1,6 +1,7 @@
 from google.cloud import firestore
+import os
 
-db = firestore.Client()
+db = firestore.Client.from_service_account_json('GCPkeys.json')
 my_collection = "tarot_bot"
 
 
