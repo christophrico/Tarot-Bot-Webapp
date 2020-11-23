@@ -18,7 +18,6 @@ def get_predictions():
     for card in predictions:
         prediction_list.append(card.to_dict())
 
-
     return prediction_list
 
 
@@ -28,10 +27,10 @@ Adds the most recent prediction to firestore
 args:
 prediction: prediction object from google AutoML
 """
-def update_database(prediction):
+def update_database(card, score):
     data = {
-        'display_name' : prediction.payload[0].display_name,
-        'score': round(prediction.payload[0].image_object_detection.score, 4),
+        'display_name' : card,
+        'score': score,
         'createdAt' : firestore.SERVER_TIMESTAMP
     }
     print(data)

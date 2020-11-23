@@ -35,11 +35,11 @@ by using AutoML API and firestore to store the prediction
 def predict():
     print("Requesting prediction from model...")
     f = request.files['file']
-    prediction = ih.request_prediction(file=f)
+    card, score = ih.request_prediction(file=f)
 
     #store the prediction in firestore to be viewed in homepage
     print("Storing prediction in Firestore...")
-    fh.update_database(prediction)
+    fh.update_database(card, score)
     return redirect('', 204)
 
 
@@ -51,7 +51,7 @@ def get_predictions():
     prediction_list = fh.get_predictions()
     return render_template("results.html",
                             most_recent=prediction_list[0],
-                            predictions=prediction_list[1:]
+                            predictions=prediction_list[1:],
                           )
 
 

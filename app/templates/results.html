@@ -22,10 +22,12 @@
           <tr>
             <th>Card</th>
             <th>Confidence Score</th>
+            <th>Ethereal Prediction Time</th>
           </tr>
           <tr>
             <td>{{ most_recent.display_name }}</td>
             <td>{{ most_recent.score }}</td>
+            <td>{{ most_recent.createdAt }}</td>
           </tr>
         </table>
 
@@ -34,11 +36,13 @@
           <tr>
             <th>Card</th>
             <th>Confidence Score</th>
+            <th>Ethereal Prediction Time</th>
           </tr>
           {% for card in predictions %}
             <tr>
               <td>{{ card.display_name }}</td>
               <td>{{ card.score }}</td>
+              <td>{{ card.createdAt }}</td>
             </tr>
           {% endfor %}
         </table>

@@ -13,7 +13,10 @@
     <center>
       <h1>TarotBot</h1>
       <p>Upload your image to look into the future!</p>
-      <i>At present, this app only works with still photos of an individual Tarot card.</i>
+      <i>
+        At present, this app only functions with still photos of an individual Tarot card.
+        <br>Card must be one of the major arcana from the Rider-Waite deck.
+      </i>
     </center>
     {{ dropzone.create(action='predict') }}
     {{ dropzone.load_js() }}
