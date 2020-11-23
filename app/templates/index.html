@@ -2,10 +2,12 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8"
+    <meta charset='UTF-8'
     <title>TarotBot</title>
     {{ dropzone.load_css() }}
     {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+
+    <script src="https://unpkg.com/htmx.org@0.4.0"></script>
   </head>
 
   <body>
@@ -14,6 +16,8 @@
      {{ dropzone.create(action='predict') }}
      {{ dropzone.load_js() }}
      {{ dropzone.config() }}
-  </body>
 
+     <a href="/retrieve-predictions"> Click here to see your predictions! </a>
+
+  </body>
 </html>

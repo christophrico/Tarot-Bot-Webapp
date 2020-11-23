@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset='UTF-8'
+    <title>TarotBot</title>
+  </head>
+  <body>
+      <p> Predictions </p>
+      {% for card in predictions %}
+        <li>Card: {{ card.display_name }}   Score: {{ card.score }}</li>
+      {% endfor %}
+      <br>
+      <a href="/">Click here to make another prediction</a>
+  </body>
+</html>

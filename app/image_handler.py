@@ -1,12 +1,11 @@
+import json
 from google.cloud import automl
-from io import BufferedReader
+
 
 # params: file of photo to run inference on
 # returns: response.payload from automl client
 # https://cloud.google.com/automl/docs/reference/rpc/google.cloud.automl.v1#predictresponse
-
-
-def get_prediction(file):
+def request_prediction(file):
 
     project_id = "241661365506"
     model_id = "IOD6459342741137522688"
@@ -25,4 +24,4 @@ def get_prediction(file):
 
     response = prediction_client.predict(request=request)
 
-    return response.payload
+    return response

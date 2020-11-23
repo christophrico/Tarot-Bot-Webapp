@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "03211048b285ca3a739313518566e2b6f67c7008c9d7b5a0a1ab13399fca671d"
+            "sha256": "ee8a3b32995c956c473447db4b378d3d0cbbf8a55e33c389997dccf56831bd82"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -112,6 +112,22 @@
             "index": "pypi",
             "version": "==2.1.0"
         },
+        "google-cloud-core": {
+            "hashes": [
+                "sha256:21afb70c1b0bce8eeb8abb5dca63c5fd37fc8aea18f4b6d60e803bd3d27e6b80",
+                "sha256:75abff9056977809937127418323faa3917f32df68490704d39a4f0d492ebc2b"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.4.3"
+        },
+        "google-cloud-firestore": {
+            "hashes": [
+                "sha256:ae1f58d9174a6fb2c9fd2758c6d4fd237fb4f0decc632b80c217bfbceda38eb6",
+                "sha256:e8a832658cf44d529a00f63da61be11eedf0988222d06e1c74d73b4ee8533687"
+            ],
+            "index": "pypi",
+            "version": "==2.0.1"
+        },
         "google.cloud.automl": {
             "hashes": [
                 "sha256:520dfe2ee04d28f3088c9c582fa2a534fc272647d5e2e59acc903c0152e61696",
@@ -119,6 +135,14 @@
             ],
             "index": "pypi",
             "version": "==2.1.0"
+        },
+        "google.cloud.firestore": {
+            "hashes": [
+                "sha256:ae1f58d9174a6fb2c9fd2758c6d4fd237fb4f0decc632b80c217bfbceda38eb6",
+                "sha256:e8a832658cf44d529a00f63da61be11eedf0988222d06e1c74d73b4ee8533687"
+            ],
+            "index": "pypi",
+            "version": "==2.0.1"
         },
         "googleapis-common-protos": {
             "hashes": [
