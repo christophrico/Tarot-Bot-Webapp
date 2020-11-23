@@ -20,7 +20,7 @@ jobs:
           command: |
             sudo chown -R circleci:circleci /usr/local/bin
             sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
-            echo ${GCLOUD_SERVICE_KEY} > ./app/GCPkeys.json
+            echo ${GCLOUD_SERVICE_KEY} > /root/project/app/GCPkeys.json
             ls -l ./app
       - restore_cache:
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
