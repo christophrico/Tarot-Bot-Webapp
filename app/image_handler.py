@@ -10,7 +10,7 @@ def request_prediction(file):
     project_id = "241661365506"
     model_id = "IOD6459342741137522688"
     name = 'projects/{}/locations/us-central1/models/{}'.format(project_id, model_id)
-    prediction_client = automl.PredictionServiceClient().from_service_account_json('./app/GCPkeys.json')
+    prediction_client = automl.PredictionServiceClient().from_service_account_json('GCPkeys.json')
 
     image = automl.Image(image_bytes=file.read())
     payload = automl.ExamplePayload(image=image)
