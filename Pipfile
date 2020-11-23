@@ -17,6 +17,7 @@ google-cloud-automl = "*"
 "google.cloud.automl" = "*"
 "google.cloud.firestore" = "*"
 google-cloud-firestore = "*"
+importlib-metadata = "*"
 
 [requires]
 python_version = "3.7"
