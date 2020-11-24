@@ -10,9 +10,12 @@ Retrieves all predictions from firestore
 Returns a list of predictions names and scores
 """
 def get_predictions():
-    predictions = db.collection(my_collection) \
-                     .order_by('createdAt',direction=firestore.Query.DESCENDING) \
-                     .stream()
+    try:
+        predictions = db.collection(my_collection) \
+                         .order_by('createdAt',direction=firestore.Query.DESCENDING) \
+                         .stream()
+    except:
+        pass
 
     prediction_list = []
     for card in predictions:
@@ -33,5 +36,7 @@ def update_database(card, score):
         'score': score,
         'createdAt' : firestore.SERVER_TIMESTAMP
     }
-    print(data)
-    db.collection(my_collection).add(data)
+    try:
+        db.collection(my_collection).add(data)
+    except:
+        pass

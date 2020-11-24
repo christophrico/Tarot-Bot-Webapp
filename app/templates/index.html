@@ -5,23 +5,21 @@
     <meta charset='UTF-8'>
     {{ dropzone.load_css() }}
     {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
-
-    <script src="https://unpkg.com/htmx.org@0.4.0"></script>
+    <center><h1>TarotBot</h1></center>
   </head>
 
   <body>
     <center>
-      <h1>TarotBot</h1>
       <p>Upload your image to look into the future!</p>
       <i>
-        At present, this app only functions with still photos of an individual Tarot card.
-        <br>Card must be one of the major arcana from the Rider-Waite deck.
+        At present, this app only functions with still photos of an individual tarot card.
+        <br>Card must be one of the
+        <a href="https://en.wikipedia.org/wiki/Major_Arcana"> major arcana</a> from the
+        <a href="https://en.wikipedia.org/wiki/Rider-Waite_tarot_deck"> Rider-Waite-Smith deck</a>.
       </i>
-    </center>
-    {{ dropzone.create(action='predict') }}
-    {{ dropzone.load_js() }}
-    {{ dropzone.config() }}
-    <center>
+      {{ dropzone.create(action='predict') }}
+      {{ dropzone.load_js() }}
+      {{ dropzone.config() }}
       <br><a href="/retrieve-predictions"> Click here to see your predictions! </a></br>
     </center>
   </body>
