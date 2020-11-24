@@ -29,7 +29,7 @@ def request_prediction(file):
         card = "The Eye is shut. Please try again later."
         score = 0
 
-    #now translate the prediction
+    #now translate the prediction to nicer looking text
     try:
         score = round(response.payload[0].image_object_detection.score, 4)
         if response.payload[0].display_name == "chariot":

@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config.update(
     DROPZONE_ALLOWED_FILE_TYPE='image',
     DROPZONE_MAX_FILE_SIZE=3,
-    DROPZONE_MAX_FILES=30,
+    DROPZONE_MAX_FILES=1,
 )
 dropzone = Dropzone(app)
 
@@ -38,7 +38,7 @@ def predict():
     card, score = ih.request_prediction(file=f)
 
     #store the prediction in firestore to be viewed in homepage
-    app.logger.info("Storing prediction in Firestore")
+    app.logger.info("Storing prediction in firestore")
     app.logger.info("Card: {} Score: {}".format(card, score))
     fh.update_database(card, score)
     return redirect('', 204)
@@ -50,7 +50,7 @@ Display a list of all the previous predictions in Firestore
 @app.route('/retrieve-predictions', methods=['GET'])
 def get_predictions():
     prediction_list = fh.get_predictions()
-
+    
     if len(prediction_list) != 0:
         return render_template("results.html",
                                 most_recent=prediction_list[0],
