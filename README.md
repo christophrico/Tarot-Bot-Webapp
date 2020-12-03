@@ -3,7 +3,7 @@
 <!-- HEADER -->
 ![Header Image](./assets/tarot.jpg)
 <p align="center">
-  <h1 align="center">TarotBot-MLKit</h1>
+  <h1 align="center">TarotBot-Flask App</h1>
   <p align="center">
      Final project for Northwestern University MSDS 434 - Analytics Application Engineering
   </p>
