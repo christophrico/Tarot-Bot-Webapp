@@ -31,17 +31,21 @@ This project is a combination of object detection and image classification on a 
 
 
 ## Development Workflow
-![Development Flow](./assets/434 development workflow.png)
+![Development Flow](./assets/434_development_workflow.png)
 1. The app was developed on a macOS machine usine pipenv to create a virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub. 
 2. This GitHub repo was connected via webhook to a CircleCI project. Upon any commits, CircleCI would checkout the repo, build and test the app, then (if passed unit tests), deploy to Google App Engine
 3. Google App Engine served out the Flask app on a publicly-facing URL.
 
 
 ## Information Flow
-![Information Flow](./assets/434 app diagram.png)
+![Information Flow](./assets/434_app_diagram.png)
 Information flow within the app is fairly straightforward.
 1. User accesses the root site URL. 
 2. User submits a photo via the form on the site.
 3. Flask receives the photo then invokes the AutoML Vision client API to request an inference on the image.
 4. Flask recieves the inference results, then invokes the Firestore client to store the results.
 5. When user navigates to the results page, Flask will again invoke the Firestore client to retrieve all inference results and display them via HTML.
+
+
+
+Read my [final report here](./assets/Christopher_Rico_MSDS434_Final.pdf)
