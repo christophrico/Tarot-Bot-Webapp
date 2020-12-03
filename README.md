@@ -1,11 +1,11 @@
 [![Tarot-Bot](https://circleci.com/gh/christophrico/Tarot-Bot-Webapp.svg?style=svg&circle-token=0f063d010843f5c678b9d06cb3568cd847348293)](https://github.com/christophrico/Tarot-Bot-Webapp)
 
 <!-- HEADER -->
-![Header Image](./assets/readme_pics/tarot.jpg)
+![Header Image](./assets/tarot.jpg)
 <p align="center">
   <h1 align="center">TarotBot-MLKit</h1>
   <p align="center">
-     Final project for Northwestern University MSDS 462 - Computer Vision
+     Final project for Northwestern University MSDS 434 - Analytics Application Engineering
   </p>
 </p>
 
@@ -31,14 +31,14 @@ This project is a combination of object detection and image classification on a 
 
 
 ## Development Workflow
-#[Development Flow](./assets/434 development workflow.png)
+# [Development Flow](./assets/434 development workflow.png)
 1. The app was developed on a macOS machine usine pipenv to create a virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub. 
 2. This GitHub repo was connected via webhook to a CircleCI project. Upon any commits, CircleCI would checkout the repo, build and test the app, then (if passed unit tests), deploy to Google App Engine
 3. Google App Engine served out the Flask app on a publicly-facing URL.
 
 
 ## Information Flow
-#[Information Flow](./assets/434 app diagram.png)
+# [Information Flow](./assets/434 app diagram.png)
 Information flow within the app is fairly straightforward.
 1. User accesses the root site URL. 
 2. User submits a photo via the form on the site.
