@@ -12,8 +12,8 @@
 ***
 ## Table of Contents
 * [Overview](#Overview)
-* [Development Workflow](#Development Workflow)
-* [Information Flow](#Information Flow)
+* [Development Workflow](#DevelopmentWorkflow)
+* [Information Flow](#InformationFlow)
 
 
 ***
@@ -31,14 +31,14 @@ This project is a combination of object detection and image classification on a 
 
 
 ## Development Workflow
-# [Development Flow](./assets/434 development workflow.png)
+![Development Flow](./assets/434 development workflow.png)
 1. The app was developed on a macOS machine usine pipenv to create a virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub. 
 2. This GitHub repo was connected via webhook to a CircleCI project. Upon any commits, CircleCI would checkout the repo, build and test the app, then (if passed unit tests), deploy to Google App Engine
 3. Google App Engine served out the Flask app on a publicly-facing URL.
 
 
 ## Information Flow
-# [Information Flow](./assets/434 app diagram.png)
+![Information Flow](./assets/434 app diagram.png)
 Information flow within the app is fairly straightforward.
 1. User accesses the root site URL. 
 2. User submits a photo via the form on the site.
