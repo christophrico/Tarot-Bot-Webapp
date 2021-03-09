@@ -1,4 +1,5 @@
 [![Tarot-Bot](https://circleci.com/gh/christophrico/Tarot-Bot-Webapp.svg?style=svg&circle-token=0f063d010843f5c678b9d06cb3568cd847348293)](https://github.com/christophrico/Tarot-Bot-Webapp)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 <!-- HEADER -->
 ![Header Image](./assets/tarot.jpg)
@@ -32,7 +33,7 @@ This project is a combination of object detection and image classification on a 
 
 ## Development Workflow
 ![Development Flow](./assets/434_development_workflow.png)
-1. The app was developed on a macOS machine usine pipenv to create a virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub. 
+1. The app was developed on a macOS machine usine pipenv to create a virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub.
 2. This GitHub repo was connected via webhook to a CircleCI project. Upon any commits, CircleCI would checkout the repo, build and test the app, then (if passed unit tests), deploy to Google App Engine
 3. Google App Engine served out the Flask app on a publicly-facing URL.
 
@@ -40,7 +41,7 @@ This project is a combination of object detection and image classification on a 
 ## Information Flow
 ![Information Flow](./assets/434_app_diagram.png)
 Information flow within the app is fairly straightforward.
-1. User accesses the root site URL. 
+1. User accesses the root site URL.
 2. User submits a photo via the form on the site.
 3. Flask receives the photo then invokes the AutoML Vision client API to request an inference on the image.
 4. Flask recieves the inference results, then invokes the Firestore client to store the results.
