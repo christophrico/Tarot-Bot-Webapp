@@ -1,5 +1,3 @@
-[![Tarot-Bot](https://circleci.com/gh/christophrico/Tarot-Bot-Webapp.svg?style=svg&circle-token=0f063d010843f5c678b9d06cb3568cd847348293)](https://github.com/christophrico/Tarot-Bot-Webapp)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 <!-- HEADER -->
 ![Header Image](./assets/tarot.jpg)
@@ -9,6 +7,10 @@
      Final project for Northwestern University MSDS 434 - Analytics Application Engineering
   </p>
 </p>
+
+[![Tarot-Bot](https://circleci.com/gh/christophrico/Tarot-Bot-Webapp.svg?style=svg&circle-token=0f063d010843f5c678b9d06cb3568cd847348293)](https://github.com/christophrico/Tarot-Bot-Webapp)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 
 ***
 ## Table of Contents
