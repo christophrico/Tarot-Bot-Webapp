@@ -35,7 +35,7 @@ This project is a combination of object detection and image classification on a 
 
 ## Development Workflow
 ![Development Flow](./assets/434_development_workflow.png)
-1. The app was developed on a macOS machine usine pipenv to create a virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub.
+1. The app was developed on a macOS machine using a pipenv virtual environment. A local development Git branch housed commits. Once features had been built and tested to satisfaction, the dev branch was merged with the main branch and pushed to GitHub.
 2. This GitHub repo was connected via webhook to a CircleCI project. Upon any commits, CircleCI would checkout the repo, build and test the app, then (if passed unit tests), deploy to Google App Engine
 3. Google App Engine served out the Flask app on a publicly-facing URL.
 
